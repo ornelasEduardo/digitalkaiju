@@ -1,3 +1,5 @@
+import Logo from "./assets/logo";
+
 export default function Home() {
   return (
     <div className="font-sans min-h-screen">
@@ -28,21 +30,9 @@ export default function Home() {
       <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
         <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
           <a href="/">
-            <div
-              className="bg-green-600"
-              style={{
-                maskImage: "url(/logo.svg)",
-                maskSize: "contain",
-                maskRepeat: "no-repeat",
-                maskPosition: "center",
-                WebkitMaskImage: "url(/logo.svg)",
-                WebkitMaskSize: "contain",
-                WebkitMaskRepeat: "no-repeat",
-                WebkitMaskPosition: "center",
-                width: "256px",
-                height: "295px",
-              }}
-            />
+            <div className="text-green-600">
+              <Logo />
+            </div>
           </a>
           <div className="text-center sm:text-left">
             <h1 className="text-4xl sm:text-6xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-600 bg-clip-text text-transparent pb-1">
