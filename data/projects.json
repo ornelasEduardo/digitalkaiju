@@ -10,19 +10,24 @@
         { "label": "TypeScript", "color": "blue" },
         { "label": "Experimental", "color": "purple" }
       ],
-      "link": { "href": "#", "label": "Learn More →" }
+      "links": [
+        {
+          "href": "https://github.com/ornelasEduardo/ezpz",
+          "label": "<i class=\"fa-brands fa-github fa-xl\"></i>"
+        },
+        {
+          "href": "https://ezpz-huh.vercel.app/",
+          "label": "<i class=\"fa-solid fa-globe fa-xl\"></i>"
+        }
+      ]
     },
     {
-      "title": "AI Assistant",
-      "description": "A custom AI assistant designed to help developers with their daily tasks.",
+      "title": "doom ds",
+      "description": "doom is a design system that borrows from classic comic book styles",
       "icon": "🤖",
       "gradient": ["from-blue-400", "to-blue-600"],
-      "tags": [
-        { "label": "Python", "color": "orange" },
-        { "label": "AI/ML", "color": "red" },
-        { "label": "In Progress", "color": "yellow" }
-      ],
-      "link": { "href": "#", "label": "Learn More →" }
+      "tags": [{ "label": "Design", "color": "orange" }],
+      "links": [{ "href": "#", "label": "Learn More →" }]
     },
     {
       "title": "Game Engine",
@@ -34,7 +39,7 @@
         { "label": "OpenGL", "color": "green" },
         { "label": "Hobby", "color": "blue" }
       ],
-      "link": { "href": "#", "label": "Learn More →" }
+      "links": [{ "href": "#", "label": "Learn More →" }]
     },
     {
       "title": "Performance Tools",
@@ -46,7 +51,7 @@
         { "label": "Node.js", "color": "green" },
         { "label": "Complete", "color": "green" }
       ],
-      "link": { "href": "#", "label": "Learn More →" }
+      "links": [{ "href": "#", "label": "Learn More →" }]
     },
     {
       "title": "Data Visualization",
@@ -58,7 +63,7 @@
         { "label": "Canvas", "color": "purple" },
         { "label": "In Progress", "color": "yellow" }
       ],
-      "link": { "href": "#", "label": "Learn More →" }
+      "links": [{ "href": "#", "label": "Learn More →" }]
     },
     {
       "title": "Coming Soon",

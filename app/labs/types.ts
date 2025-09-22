@@ -23,7 +23,7 @@ export interface ProjectItem {
   icon: string;
   gradient?: [string, string];
   tags?: ProjectTag[];
-  link?: ProjectLink;
+  links?: ProjectLink[];
   comingSoon?: boolean;
 }
 

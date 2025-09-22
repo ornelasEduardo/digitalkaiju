@@ -151,14 +151,22 @@ export default function LabsPage() {
                         ))}
                       </div>
                     )}
-                    {item.link && (
-                      <a
-                        href={item.link.href}
-                        className="text-green-600 hover:text-green-700 font-medium"
-                      >
-                        {item.link.label}
-                      </a>
-                    )}
+                    <div className="flex gap-2 mt-6">
+                      {item.links &&
+                        item.links.length > 0 &&
+                        item.links.map(({ href, label }) => {
+                          return (
+                            <a
+                              key={`${href}+${label}`}
+                              href={href}
+                              className="text-green-600 hover:text-green-700 font-medium"
+                              dangerouslySetInnerHTML={{
+                                __html: label,
+                              }}
+                            ></a>
+                          );
+                        })}
+                    </div>
                   </div>
                 </div>
               );
