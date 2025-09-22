@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
+import type { ProjectsFile, ProjectItem, ProjectTag } from "./types";
+import projectsData from "../../data/projects.json";
 
 export const metadata: Metadata = {
   title: "DigitalKaiju Labs - R&D Projects",
@@ -7,7 +9,34 @@ export const metadata: Metadata = {
     "A home for all our R&D and hobby projects. Where we experiment, build, and break things in the name of innovation.",
 };
 
+function tagClass(tag: ProjectTag): string {
+  const color = tag.color ?? "gray";
+  const base = "px-3 py-1 text-sm rounded-full";
+  const light = {
+    green: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+    blue: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+    purple:
+      "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
+    orange:
+      "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
+    red: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+    yellow:
+      "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
+    gray: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200",
+  } as const;
+  return `${base} ${light[color]}`;
+}
+
+function gradientClass(item: ProjectItem): string {
+  if (!item.gradient || item.gradient.length !== 2) {
+    return "from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600";
+  }
+  return `${item.gradient[0]} ${item.gradient[1]}`;
+}
+
 export default function LabsPage() {
+  const { projects } = projectsData as ProjectsFile;
+
   return (
     <div className="font-sans min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <header className="border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
@@ -66,182 +95,74 @@ export default function LabsPage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                <div className="text-6xl">🧪</div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                  Project Alpha
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  An experimental web framework built for the next generation of
-                  applications.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">
-                    React
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">
-                    TypeScript
-                  </span>
-                  <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm rounded-full">
-                    Experimental
-                  </span>
-                </div>
-                <a
-                  href="#"
-                  className="text-green-600 hover:text-green-700 font-medium"
+            {projects.map((item, idx) => {
+              if (item.comingSoon) {
+                return (
+                  <div
+                    key={idx}
+                    className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border-2 border-dashed border-gray-300 dark:border-gray-600"
+                  >
+                    <div
+                      className={`h-48 bg-gradient-to-br ${gradientClass(
+                        item
+                      )} flex items-center justify-center`}
+                    >
+                      <div className="text-6xl">{item.icon}</div>
+                    </div>
+                    <div className="p-6 text-center">
+                      <h3 className="text-xl font-semibold mb-2 text-gray-500 dark:text-gray-400">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-500 dark:text-gray-500 mb-4">
+                        {item.description}
+                      </p>
+                      <div className="text-green-600 font-medium">
+                        Ideas Welcome →
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              return (
+                <div
+                  key={idx}
+                  className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
                 >
-                  Learn More →
-                </a>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                <div className="text-6xl">🤖</div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                  AI Assistant
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  A custom AI assistant designed to help developers with their
-                  daily tasks.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-sm rounded-full">
-                    Python
-                  </span>
-                  <span className="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-sm rounded-full">
-                    AI/ML
-                  </span>
-                  <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-sm rounded-full">
-                    In Progress
-                  </span>
+                  <div
+                    className={`h-48 bg-gradient-to-br ${gradientClass(
+                      item
+                    )} flex items-center justify-center`}
+                  >
+                    <div className="text-6xl">{item.icon}</div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">
+                      {item.description}
+                    </p>
+                    {item.tags && item.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {item.tags.map((tag, i) => (
+                          <span key={i} className={tagClass(tag)}>
+                            {tag.label}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {item.link && (
+                      <a
+                        href={item.link.href}
+                        className="text-green-600 hover:text-green-700 font-medium"
+                      >
+                        {item.link.label}
+                      </a>
+                    )}
+                  </div>
                 </div>
-                <a
-                  href="#"
-                  className="text-green-600 hover:text-green-700 font-medium"
-                >
-                  Learn More →
-                </a>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
-                <div className="text-6xl">🎮</div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                  Game Engine
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  A lightweight 2D game engine built from scratch for indie
-                  developers.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm rounded-full">
-                    C++
-                  </span>
-                  <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">
-                    OpenGL
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">
-                    Hobby
-                  </span>
-                </div>
-                <a
-                  href="#"
-                  className="text-green-600 hover:text-green-700 font-medium"
-                >
-                  Learn More →
-                </a>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
-                <div className="text-6xl">⚡</div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                  Performance Tools
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  A suite of tools for monitoring and optimizing web application
-                  performance.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-sm rounded-full">
-                    JavaScript
-                  </span>
-                  <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">
-                    Node.js
-                  </span>
-                  <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded full">
-                    Complete
-                  </span>
-                </div>
-                <a
-                  href="#"
-                  className="text-green-600 hover:text-green-700 font-medium"
-                >
-                  Learn More →
-                </a>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center">
-                <div className="text-6xl">🔬</div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                  Data Visualization
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Interactive data visualization library for complex datasets
-                  and real-time analytics.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">
-                    D3.js
-                  </span>
-                  <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm rounded-full">
-                    Canvas
-                  </span>
-                  <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-sm rounded-full">
-                    In Progress
-                  </span>
-                </div>
-                <a
-                  href="#"
-                  className="text-green-600 hover:text-green-700 font-medium"
-                >
-                  Learn More →
-                </a>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border-2 border-dashed border-gray-300 dark:border-gray-600">
-              <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center">
-                <div className="text-6xl">🚀</div>
-              </div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-semibold mb-2 text-gray-500 dark:text-gray-400">
-                  Coming Soon
-                </h3>
-                <p className="text-gray-500 dark:text-gray-500 mb-4">
-                  More exciting projects are in the pipeline. Stay tuned!
-                </p>
-                <div className="text-green-600 font-medium">
-                  Ideas Welcome →
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>

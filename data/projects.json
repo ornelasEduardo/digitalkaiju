@@ -1,0 +1,70 @@
+{
+  "projects": [
+    {
+      "title": "ezpz",
+      "description": "A customization platform that emphasizes high portability and user driven layout.",
+      "icon": "🐙",
+      "gradient": ["from-green-400", "to-green-600"],
+      "tags": [
+        { "label": "React", "color": "green" },
+        { "label": "TypeScript", "color": "blue" },
+        { "label": "Experimental", "color": "purple" }
+      ],
+      "link": { "href": "#", "label": "Learn More →" }
+    },
+    {
+      "title": "AI Assistant",
+      "description": "A custom AI assistant designed to help developers with their daily tasks.",
+      "icon": "🤖",
+      "gradient": ["from-blue-400", "to-blue-600"],
+      "tags": [
+        { "label": "Python", "color": "orange" },
+        { "label": "AI/ML", "color": "red" },
+        { "label": "In Progress", "color": "yellow" }
+      ],
+      "link": { "href": "#", "label": "Learn More →" }
+    },
+    {
+      "title": "Game Engine",
+      "description": "A lightweight 2D game engine built from scratch for indie developers.",
+      "icon": "🎮",
+      "gradient": ["from-purple-400", "to-purple-600"],
+      "tags": [
+        { "label": "C++", "color": "gray" },
+        { "label": "OpenGL", "color": "green" },
+        { "label": "Hobby", "color": "blue" }
+      ],
+      "link": { "href": "#", "label": "Learn More →" }
+    },
+    {
+      "title": "Performance Tools",
+      "description": "A suite of tools for monitoring and optimizing web application performance.",
+      "icon": "⚡",
+      "gradient": ["from-yellow-400", "to-orange-500"],
+      "tags": [
+        { "label": "JavaScript", "color": "yellow" },
+        { "label": "Node.js", "color": "green" },
+        { "label": "Complete", "color": "green" }
+      ],
+      "link": { "href": "#", "label": "Learn More →" }
+    },
+    {
+      "title": "Data Visualization",
+      "description": "Interactive data visualization library for complex datasets and real-time analytics.",
+      "icon": "🔬",
+      "gradient": ["from-pink-400", "to-red-500"],
+      "tags": [
+        { "label": "D3.js", "color": "blue" },
+        { "label": "Canvas", "color": "purple" },
+        { "label": "In Progress", "color": "yellow" }
+      ],
+      "link": { "href": "#", "label": "Learn More →" }
+    },
+    {
+      "title": "Coming Soon",
+      "description": "More exciting projects are in the pipeline. Stay tuned!",
+      "icon": "🚀",
+      "comingSoon": true
+    }
+  ]
+}
