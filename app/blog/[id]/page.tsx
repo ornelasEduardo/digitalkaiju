@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { BlogPost } from "../types";
 import { getAllPosts, getPostById, markdownToHtml } from "../utils";
 
 type Props = {
@@ -15,7 +14,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: any): Promise<Metadata> {
   const post = getPostById(params.id);
 
   if (!post) {
@@ -39,7 +38,7 @@ function formatDate(dateString: string): string {
   });
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function BlogPostPage({ params }: any) {
   const post = getPostById(params.id);
 
   if (!post) {
