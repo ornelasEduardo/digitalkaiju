@@ -5,6 +5,7 @@ export type TagColor =
   | "orange"
   | "red"
   | "yellow"
+  | "indigo"
   | "gray";
 
 export interface ProjectTag {
@@ -24,6 +25,12 @@ export interface ProjectItem {
   gradient?: [string, string];
   tags?: ProjectTag[];
   links?: ProjectLink[];
+  image?: {
+    url: string;
+    config?: {
+      zoom?: number;
+    };
+  };
   comingSoon?: boolean;
 }
 

@@ -1,14 +1,60 @@
 {
   "projects": [
     {
+      "title": "doom ds",
+      "description": "doom is a design system that is inspired by neubrutalism and classic comic book styles",
+      "icon": "🤖",
+      "image": {
+        "url": "/projects/doom.png",
+        "config": {
+          "zoom": 2.5
+        }
+      },
+      "gradient": ["from-black", "to-gray-800"],
+      "tags": [{ "label": "Design System", "color": "purple" }],
+      "links": [
+        {
+          "href": "https://github.com/ornelasEduardo/doom",
+          "label": "<i class=\"fa-brands fa-github fa-xl\"></i>"
+        },
+        {
+          "href": "https://www.doom.design",
+          "label": "<i class=\"fa-solid fa-globe fa-xl\"></i>"
+        }
+      ]
+    },
+    {
+      "title": "moneyprinter",
+      "description": "A local-first finance app focused on projections and goal-oriented budgeting.",
+      "icon": "💸",
+      "image": {
+        "url": "/projects/moneyprinter.svg",
+        "config": {
+          "zoom": 0.5
+        }
+      },
+      "gradient": ["from-purple-500", "to-purple-700"],
+      "tags": [
+        { "label": "React", "color": "blue" },
+        { "label": "TypeScript", "color": "indigo" },
+        { "label": "Finance", "color": "green" }
+      ],
+      "links": [
+        {
+          "href": "https://github.com/ornelasEduardo/moneyprinter",
+          "label": "<i class=\"fa-brands fa-github fa-xl\"></i>"
+        }
+      ]
+    },
+    {
       "title": "ezpz",
       "description": "A customization platform that emphasizes high portability and user driven layout.",
-      "icon": "🐙",
-      "gradient": ["from-green-400", "to-green-600"],
+      "icon": "ezpz 🐙",
+      "gradient": ["from-yellow-200", "to-yellow-500"],
       "tags": [
-        { "label": "React", "color": "green" },
-        { "label": "TypeScript", "color": "blue" },
-        { "label": "Experimental", "color": "purple" }
+        { "label": "React", "color": "blue" },
+        { "label": "TypeScript", "color": "indigo" },
+        { "label": "Experimental", "color": "red" }
       ],
       "links": [
         {
@@ -20,50 +66,6 @@
           "label": "<i class=\"fa-solid fa-globe fa-xl\"></i>"
         }
       ]
-    },
-    {
-      "title": "doom ds",
-      "description": "doom is a design system that borrows from classic comic book styles",
-      "icon": "🤖",
-      "gradient": ["from-blue-400", "to-blue-600"],
-      "tags": [{ "label": "Design", "color": "orange" }],
-      "links": [{ "href": "#", "label": "Learn More →" }]
-    },
-    {
-      "title": "Game Engine",
-      "description": "A lightweight 2D game engine built from scratch for indie developers.",
-      "icon": "🎮",
-      "gradient": ["from-purple-400", "to-purple-600"],
-      "tags": [
-        { "label": "C++", "color": "gray" },
-        { "label": "OpenGL", "color": "green" },
-        { "label": "Hobby", "color": "blue" }
-      ],
-      "links": [{ "href": "#", "label": "Learn More →" }]
-    },
-    {
-      "title": "Performance Tools",
-      "description": "A suite of tools for monitoring and optimizing web application performance.",
-      "icon": "⚡",
-      "gradient": ["from-yellow-400", "to-orange-500"],
-      "tags": [
-        { "label": "JavaScript", "color": "yellow" },
-        { "label": "Node.js", "color": "green" },
-        { "label": "Complete", "color": "green" }
-      ],
-      "links": [{ "href": "#", "label": "Learn More →" }]
-    },
-    {
-      "title": "Data Visualization",
-      "description": "Interactive data visualization library for complex datasets and real-time analytics.",
-      "icon": "🔬",
-      "gradient": ["from-pink-400", "to-red-500"],
-      "tags": [
-        { "label": "D3.js", "color": "blue" },
-        { "label": "Canvas", "color": "purple" },
-        { "label": "In Progress", "color": "yellow" }
-      ],
-      "links": [{ "href": "#", "label": "Learn More →" }]
     },
     {
       "title": "Coming Soon",

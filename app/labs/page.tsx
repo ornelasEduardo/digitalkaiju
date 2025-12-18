@@ -6,7 +6,7 @@ import projectsData from "../../data/projects.json";
 export const metadata: Metadata = {
   title: "DigitalKaiju Labs - R&D Projects",
   description:
-    "A home for all our R&D and hobby projects. Where we experiment, build, and break things in the name of innovation.",
+    "A collection of side projects and experiments we're passionate about. Just building things we like.",
 };
 
 function tagClass(tag: ProjectTag): string {
@@ -22,6 +22,8 @@ function tagClass(tag: ProjectTag): string {
     red: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
     yellow:
       "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
+    indigo:
+      "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
     gray: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200",
   } as const;
   return `${base} ${light[color]}`;
@@ -74,8 +76,8 @@ export default function LabsPage() {
             digitalkaiju labs
           </h1>
           <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-            A home for all our R&D and hobby projects. Where we experiment,
-            build, and break things in the name of innovation.
+            A collection of side projects and experiments we're passionate
+            about. Just building things we like and seeing where they go.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -109,11 +111,27 @@ export default function LabsPage() {
                     className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border-2 border-dashed border-gray-300 dark:border-gray-600"
                   >
                     <div
-                      className={`h-48 bg-gradient-to-br ${gradientClass(
-                        item
-                      )} flex items-center justify-center`}
+                      className={`h-48 relative overflow-hidden ${
+                        item.image && !item.image.url.endsWith(".svg")
+                          ? "bg-gray-100 dark:bg-gray-900"
+                          : `bg-gradient-to-br ${gradientClass(item)}`
+                      } flex items-center justify-center`}
                     >
-                      <div className="text-6xl">{item.icon}</div>
+                      {item.image ? (
+                        <img
+                          src={item.image.url}
+                          alt={item.title}
+                          className="w-full h-full object-contain"
+                          style={{ transform: `scale(${item.image.config?.zoom ?? 1})` }}
+                        />
+                      ) : (
+                        <div 
+                          className="text-4xl font-bold"
+                          style={{ fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif' }}
+                        >
+                          {item.icon}
+                        </div>
+                      )}
                     </div>
                     <div className="p-6 text-center">
                       <h3 className="text-xl font-semibold mb-2 text-gray-500 dark:text-gray-400">
@@ -135,11 +153,27 @@ export default function LabsPage() {
                   className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
                 >
                   <div
-                    className={`h-48 bg-gradient-to-br ${gradientClass(
-                      item
-                    )} flex items-center justify-center`}
+                    className={`h-48 relative overflow-hidden ${
+                      item.image && !item.image.url.endsWith(".svg")
+                        ? "bg-gray-100 dark:bg-gray-900"
+                        : `bg-gradient-to-br ${gradientClass(item)}`
+                    } flex items-center justify-center`}
                   >
-                    <div className="text-6xl">{item.icon}</div>
+                    {item.image ? (
+                      <img
+                        src={item.image.url}
+                        alt={item.title}
+                        className="w-full h-full object-contain"
+                        style={{ transform: `scale(${item.image.config?.zoom ?? 1})` }}
+                      />
+                    ) : (
+                      <div 
+                        className="text-4xl font-bold"
+                        style={{ fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif' }}
+                      >
+                        {item.icon}
+                      </div>
+                    )}
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
@@ -165,6 +199,8 @@ export default function LabsPage() {
                             <a
                               key={`${href}+${label}`}
                               href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="text-green-600 hover:text-green-700 font-medium"
                               dangerouslySetInnerHTML={{
                                 __html: label,
